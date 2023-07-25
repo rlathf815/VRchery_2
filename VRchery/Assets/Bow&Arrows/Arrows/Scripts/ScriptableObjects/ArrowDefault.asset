@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5fd4e31950b1144f9bedb2e07e151cd, type: 3}
+  m_Name: ArrowDefault
+  m_EditorClassIdentifier: 
+  DisableTrailEmissionTime: 0.01
+  TrailFadeoutTime: 0.4
+  DisableTrailTime: 0.8
+  StuckDepthMin: 0.25
+  StuckDepthMax: 0.6
+  CollisionLayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
