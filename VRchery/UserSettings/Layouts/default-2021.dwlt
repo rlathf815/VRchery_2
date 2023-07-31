@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 2560
     height: 1357
   m_ShowMode: 4
-  m_Title: Project
+  m_Title: Scene
   m_RootView: {fileID: 6}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -48,7 +48,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 109
+  controlID: 92
 --- !u!114 &3
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -223,7 +223,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 110
+  controlID: 93
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -248,7 +248,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 111
+  controlID: 94
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -318,22 +318,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets
+    - Assets/Bow&Arrows/Arrows/Materials
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets
+  - Assets/Bow&Arrows/Arrows/Materials
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\UnityGit\VRchery_2\VRchery
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 79}
-    m_SelectedIDs: 207a0000
-    m_LastClickedID: 31264
-    m_ExpandedIDs: 00000000207a0000307b0000367b00003c7b0000447b00004a7b0000c47c0000c67c0000687e0000387f00003a7f00002091000000ca9a3bffffff7f
+    scrollPos: {x: 0, y: 191}
+    m_SelectedIDs: f8660000
+    m_LastClickedID: 26360
+    m_ExpandedIDs: 000000001665000022650000286500002a650000ce660000f0660000f26600005668000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -361,7 +361,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000207a0000
+    m_ExpandedIDs: 0000000016650000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -491,9 +491,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 
-      m_LastClickedID: 0
-      m_ExpandedIDs: 8c5bfeffba64feffa874feffb088feffd090feffe29bfeff8adbffff36e2ffffa0ebffff
+      m_SelectedIDs: aa640000
+      m_LastClickedID: 25770
+      m_ExpandedIDs: 2efbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -776,9 +776,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 211.90685, y: -33.690323, z: -38.25001}
+    m_Target: {x: 131.10634, y: 2.3573136, z: -135.05475}
     speed: 2
-    m_Value: {x: 211.90685, y: -33.690323, z: -38.25001}
+    m_Value: {x: 131.10634, y: 2.3573136, z: -135.05475}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -825,13 +825,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: 0.06389248, y: 0.73400736, z: -0.069893934, w: 0.6729733}
+    m_Target: {x: 0.0055032773, y: 0.91227853, z: -0.012670455, w: 0.41013682}
     speed: 2
-    m_Value: {x: 0.06376758, y: 0.7347856, z: -0.06996776, w: 0.6716609}
+    m_Value: {x: 0.005520468, y: 0.9113637, z: -0.012658039, w: 0.41137}
   m_Size:
-    m_Target: 110.775795
+    m_Target: 87.81757
     speed: 2
-    m_Value: 115.9956
+    m_Value: 91.955574
   m_Ortho:
     m_Target: 0
     speed: 2
