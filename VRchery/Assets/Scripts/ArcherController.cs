@@ -28,14 +28,9 @@ public class ArcherController : MonoBehaviour
     private bool wasGripPressed;
 
     public Vector3 rotationOffsetEuler; // 회전 offset값. 정확히 앞으로 잘 나가게 조정
-    //private void FixedUpdate()
-    //{
-    //    if (Input.GetKey(KeyCode.E))
-    //    {
-    //        // Shoot an Arrow every fixed tick while the key is pressed
-    //        TryToShoot();
-    //    }
-    //}
+    public Vector3 positionOffset; // 위치 offset값. 정확히 앞으로 잘 나가게 조정
+    public GameObject TargetObject; // 화살 비행 방향을 나타내는 게임 오브젝트
+
 
     private void Update()
     {
@@ -45,43 +40,43 @@ public class ArcherController : MonoBehaviour
 
         if (devices.Count > 0)
         {
-            Quaternion rotationOffset = Quaternion.Euler(rotationOffsetEuler); // Use the offset from the public field
+            Quaternion rotationOffset = Quaternion.Euler(rotationOffsetEuler);
 
             InputDevice leftController = devices[0];
             leftController.TryGetFeatureValue(CommonUsages.deviceRotation, out Quaternion deviceRotation);
             leftController.TryGetFeatureValue(CommonUsages.devicePosition, out Vector3 devicePosition);
 
-            deviceRotation *= rotationOffset;  // apply the rotation offset
+            deviceRotation *= rotationOffset;  // 회전 오프셋 적용
             Vector3 direction = deviceRotation * Vector3.forward;
 
             Vector3 rayOrigin = devicePosition;
             Vector3 rayDirection = deviceRotation * Vector3.forward;
-            Debug.DrawRay(rayOrigin, rayDirection * 10f, Color.red);  // Multiplied by 10 to make it visible in the scene view
+            Debug.DrawRay(rayOrigin, rayDirection * 10f, Color.red);  
 
             leftController.TryGetFeatureValue(CommonUsages.gripButton, out bool gripValue);
 
             if (gripValue)
             {
-                // Increase the hold time
+                // hold time 증가
                 rKeyHoldTime += Time.deltaTime;
             }
             else if (wasGripPressed)
             {
-                // Calculate modifiedFlightSpeed based on rKeyHoldTime
+                // 수정된 비행 속도를 rKeyHoldTime에 따라 계산
                 //float modifiedFlightSpeed = Mathf.Lerp(minFlightSpeed, maxFlightSpeed, rKeyHoldTime);
-                float modifiedFlightSpeed = 20f;
+                float modifiedFlightSpeed = ArrowFlightSpeed; //일단 테스트용으로 스피드 에디터에서 지정
 
                 // Calculate modifiedShootRange based on rKeyHoldTime
                 float modifiedShootRange = Mathf.Lerp(MinimalShootRange, MaximalShootRange, rKeyHoldTime);
 
-                // Shoot a single Arrow
+                // Shoot
                 TryToShoot(modifiedShootRange, modifiedFlightSpeed);
 
-                // Reset the hold time
+                
                 rKeyHoldTime = 0f;
             }
 
-            // Update wasGripPressed to the current state of the grip button
+            // 그립 버튼의 현재 상태로 업데이트
             wasGripPressed = gripValue;
         }
     }
@@ -90,63 +85,24 @@ public class ArcherController : MonoBehaviour
 
     private void TryToShoot(float modifiedMaxShootRange, float modifiedFlightSpeed)
     {
-        List<InputDevice> devices = new List<InputDevice>();
-        InputDeviceCharacteristics leftControllerCharacteristics = InputDeviceCharacteristics.Left | InputDeviceCharacteristics.Controller;
-        InputDevices.GetDevicesWithCharacteristics(leftControllerCharacteristics, devices);
+        Vector3 direction = TargetObject.transform.forward; // tell the direction the target object is pointing
 
-        if (devices.Count > 0)
-        {
-            InputDevice leftController = devices[0];
-            leftController.TryGetFeatureValue(CommonUsages.deviceRotation, out Quaternion deviceRotation);
-            Vector3 direction = deviceRotation * Vector3.forward; // this gives us the direction in which the controller is pointing
+        // Calculate the target position based on the direction the arrow should be fired
+        Vector3 targetPos = transform.position + direction * modifiedMaxShootRange;
 
-            // Calculate the target position based on the direction in which the arrow should be shot
-            Vector3 targetPos = transform.position + direction * modifiedMaxShootRange;
-
-            ShootArrow(direction, modifiedMaxShootRange, modifiedFlightSpeed);
-        }
+        ShootArrow(direction, modifiedMaxShootRange, modifiedFlightSpeed);
     }
-
 
 
 
 
     private void ShootArrow(Vector3 direction, float modifiedMaxShootRange, float modifiedFlightSpeed)
     {
-        // Calculate the distance to the target position
-      //  float distance = Vector3.Distance(transform.position, targetPos);
-      //
-      //  // If the target is too far, adjust it to the maximal shoot range
-      //  if (distance > modifiedMaxShootRange)
-      //  {
-      //      // Calculate the direction vector to the target
-      //      Vector3 direction = (targetPos - transform.position).normalized;
-      //
-      //      // Calculate the position of the maximal shoot range in the direction of the target
-      //      targetPos = transform.position + direction * modifiedMaxShootRange;
-      //
-      //      // Update the distance to the target position
-      //      distance = modifiedMaxShootRange;
-      //  }
-      //
-      //  // Calculate the spread-range relative to the distance
-      //  float spreadFactorByDistance = SpreadFactor * (1f + (SpreadFactorDistanceImpact * distance));
-      //
-      //  // Calculate inaccurate target (somewhere around the target position)
-      //  Vector3 inaccurateTarget = (Random.insideUnitSphere * spreadFactorByDistance) + targetPos;
+        Quaternion rotationOffset = Quaternion.Euler(rotationOffsetEuler);
+        var Arrow = Instantiate(ArrowPrefab, transform.position + positionOffset, Quaternion.LookRotation(direction) * rotationOffset);
 
-        // Create a new Arrow
-        var Arrow = Instantiate(ArrowPrefab, transform.position, Quaternion.LookRotation(direction));
-
-        // Name the Arrow "Arrow" to remove the default name with "(Clone)"
         Arrow.name = "Arrow";
-
-        // Tell the Arrow to go shwoooosh
-        //Arrow.GetComponent<ArrowController>().Shoot(inaccurateTarget, gameObject, ArrowFlightSpeed, HeightMultiplier, ArrowLifeTime);
-        //Arrow.GetComponent<ArrowController>().Shoot(inaccurateTarget, gameObject, modifiedFlightSpeed, HeightMultiplier, ArrowLifeTime);
         Arrow.GetComponent<ArrowController>().Shoot(direction, gameObject, modifiedFlightSpeed, HeightMultiplier, ArrowLifeTime);
-
     }
-
 
 }
