@@ -6,9 +6,9 @@ public class ArrowController : MonoBehaviour
     public TrailRenderer trailRenderer; 
 
     public ArrowSO ArrowSO;            
-    public GameObject MeshParent;      
+    public GameObject MeshParent;
 
-    private Vector3 target;            
+    private Vector3 velocity;
     private Collider ownerCollider;    
     private float flightSpeed;         
     private float heightMultiplier;    
@@ -20,12 +20,14 @@ public class ArrowController : MonoBehaviour
     private float speedToDistance;     
     private Vector3 lastPosition;      
     private bool readyToFly;           
-    private bool isInitialized;        
+    private bool isInitialized;
+    private Vector3 direction;
+    // Gravity
+    private float gravity = -9.81f;
 
     private void Awake()
     {
         // Initialize the Arrow
-        target = Vector3.zero;
         startPoint = transform.position;
         lastPosition = transform.position;
         readyToFly = false;
@@ -42,13 +44,8 @@ public class ArrowController : MonoBehaviour
     {
         // Make the Arrow destroy itself in x(LifeTime) seconds
         Destroy(gameObject, lifeTime);
-
-        // Calculate the distance to the target
-        targetDistance = Vector3.Distance(transform.position, target);
-
-        // Calculate the flight-speed relative to the distance
-        speedToDistance = flightSpeed / targetDistance * flightSpeed;
     }
+
 
     private void FixedUpdate()
     {
@@ -65,12 +62,15 @@ public class ArrowController : MonoBehaviour
             isInitialized = false;
         }
 
-        if (readyToFly && target != Vector3.zero)
+        if (readyToFly)
         {
             flightTimer += Time.deltaTime;
 
+            // Update the velocity with the force of gravity
+            velocity.y += gravity * Time.deltaTime;
+
             // Move the Arrow along the Parabola
-            transform.position = MathParabola.Parabola(startPoint, target, (targetDistance / 5f) * heightMultiplier, flightTimer * speedToDistance);
+            transform.position += velocity * Time.deltaTime;
 
             // The direction the Arrow is currently flying
             Vector3 direction = transform.position - lastPosition;
@@ -105,9 +105,10 @@ public class ArrowController : MonoBehaviour
     /// <param name="flightSpeed">The speed of the Arrow</param>
     /// <param name="heightMultiplier">The parabola-hight of the flightpath</param>
     /// <param name="lifeTime">Time until the Arrow gets destroyed</param>
-    public void Shoot(Vector3 target, GameObject owner, float flightSpeed, float heightMultiplier, float lifeTime)
+    public void Shoot(Vector3 direction, GameObject owner, float flightSpeed, float heightMultiplier, float lifeTime)
     {
-        this.target = target;
+        direction.y = 0;
+        this.velocity = direction * flightSpeed;
         ownerCollider = owner.GetComponent<Collider>();
         this.flightSpeed = flightSpeed;
         this.heightMultiplier = heightMultiplier;
@@ -116,6 +117,7 @@ public class ArrowController : MonoBehaviour
         // begin the arrow flight on the next FixedUpdate-step
         isInitialized = true;
     }
+
 
     private void Arrive(RaycastHit hit)
     {
