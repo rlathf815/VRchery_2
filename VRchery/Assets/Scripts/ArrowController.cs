@@ -27,7 +27,7 @@ public class ArrowController : MonoBehaviour
 
     private void Awake()
     {
-        // Initialize the Arrow
+        // Initialize 
         startPoint = transform.position;
         lastPosition = transform.position;
         readyToFly = false;
@@ -42,7 +42,7 @@ public class ArrowController : MonoBehaviour
 
     private void Start()
     {
-        // Make the Arrow destroy itself in x(LifeTime) seconds
+        // lifeTime 지난 후 사라짐
         Destroy(gameObject, lifeTime);
     }
 
@@ -51,7 +51,6 @@ public class ArrowController : MonoBehaviour
     {
         if (isInitialized)
         {
-            // Reenable the renderers
             MeshRenderer[] meshRenderers = transform.GetComponentsInChildren<MeshRenderer>();
             foreach (var renderer in meshRenderers)
             {
@@ -127,7 +126,7 @@ public class ArrowController : MonoBehaviour
         // Stop emmitting the trail when stuck (so stuck arrows moving with its parent i.e. the enemy, do not emmit a trail)
         // This is done with a short delay to avoid unwated artifacts
         Invoke("DisableTrailEmission", ArrowSO.DisableTrailEmissionTime);
-        // Make the trail fade out fast and then disable it
+        // 꼬리 페이드아웃
         trailRenderer.time = ArrowSO.TrailFadeoutTime;
         Invoke("DisableTrail", ArrowSO.DisableTrailTime);
 
