@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Projectile
   - target
+  - Quiver
+  - RightHand
+  - ArrowHand
   layers:
   - Default
   - TransparentFX

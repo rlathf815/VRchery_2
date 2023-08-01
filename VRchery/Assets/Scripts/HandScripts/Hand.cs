@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
 [RequireComponent(typeof(Animator))]
 public class Hand : MonoBehaviour
 {
@@ -21,11 +20,18 @@ public class Hand : MonoBehaviour
     {
         animator = GetComponent<Animator>();
     }
+    private void OnEnable()
+    {
+        // Reset the animation to the initial state when the object is reactivated
+        gripCurrent = Mathf.MoveTowards(1.0f, 0f, Time.deltaTime * speed);
+        animator.SetFloat(animatorGripParam, 0f);
+    }
 
     // Update is called once per frame
     void Update()
     {
         AnimateHand();
+        Debug.Log("current" + gripCurrent);
     }
 
     internal void SetDraw(float v)
@@ -45,10 +51,13 @@ public class Hand : MonoBehaviour
             drawCurrent = Mathf.MoveTowards(drawCurrent, drawTarget, Time.deltaTime * speed);
             animator.SetFloat(animatorDrawParam, drawCurrent);
         }
+
         if (gripCurrent != gripTarget)
         {
             gripCurrent = Mathf.MoveTowards(gripCurrent, gripTarget, Time.deltaTime * speed);
             animator.SetFloat(animatorGripParam, gripCurrent);
         }
     }
+
+
 }
