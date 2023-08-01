@@ -131,21 +131,18 @@ public class ArrowController : MonoBehaviour
         trailRenderer.time = ArrowSO.TrailFadeoutTime;
         Invoke("DisableTrail", ArrowSO.DisableTrailTime);
 
-        // Make the arrow stuck at a random depth
-        // Modify these values to change how deep into the object the arrows gets stuck (0 is the arrow-tip)
+        // 랜덤한 깊이로 박히도록
         transform.position = hit.point += transform.forward * Random.Range(ArrowSO.StuckDepthMin, ArrowSO.StuckDepthMax);
 
-        // Make the Arrow a child of the object it has hit (this causes the stuck arrow to move with its parent)
+        // 충돌한 오브젝트의 하위로 들어가도록 함
         MakeChildOfHitObject(hit.transform);
     }
 
-    // Disable the arrow trail emission
     private void DisableTrailEmission()
     {
         trailRenderer.emitting = false;
     }
 
-    // Disable the arrow trail
     private void DisableTrail()
     {
         trailRenderer.enabled = false;
@@ -153,38 +150,32 @@ public class ArrowController : MonoBehaviour
 
     private void MakeChildOfHitObject(Transform parentTransform)
     {
-        // Only make the arrow a child if the object is suited to 'become a parent'
-        // For more info this see the documentation
+
         if (IsSuitedParent(parentTransform))
         {
             Quaternion originalRotation = transform.rotation;
 
-            // Reset the rotation of the arrow to get rid of mesh-deformation when parenting
             transform.rotation = new Quaternion();
 
-            // Set the parent and keep the world position
             transform.SetParent(parentTransform, true);
 
-            // Rotate the mesh and the trail
             MeshParent.transform.rotation = originalRotation;
         }
     }
 
-    // Check whether the transform is suited to become the parent of the arrow
     private bool IsSuitedParent(Transform parent)
     {
         if (IsUniformScaled(parent) || IsUniformRotated(parent))
             return true;
         else
         {
-            //When the parent is non uniform scaled and rotated giving it a child will result in wierd mesh-deformation of the arrow
             return false;
         }
     }
 
     private bool IsUniformScaled(Transform parent)
     {
-        // When x,y and z are all the same it means the scale is uniform
+
         if (parent.localScale.x == parent.localScale.y && parent.localScale.x == parent.localScale.z)
             return true;
         else
@@ -195,12 +186,11 @@ public class ArrowController : MonoBehaviour
     {
         var rotation = parent.rotation.eulerAngles;
 
-        // When x,y and z are all the same it means the rotation is uniform
         if (parent.rotation.x == parent.rotation.y && parent.rotation.x == parent.rotation.z)
             return true;
         else
         {
-            // When each axis is a multiple of 90° it is uniform aswell (or atleast suitable)
+
             if (Mathf.Round(rotation.x) % 90f == 0 && Mathf.Round(rotation.y) % 90f == 0 && Mathf.Round(rotation.z) % 90f == 0)
                 return true;
             else
