@@ -1,0 +1,121 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!319 &31900000
+AvatarMask:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Draw
+  m_Mask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+  m_Elements:
+  - m_Path: 
+    m_Weight: 1
+  - m_Path: Left.StylizedHandVariation03
+    m_Weight: 0
+  - m_Path: Right.StylizedHandVariation03
+    m_Weight: 1
+  - m_Path: StylizedHand.Left
+    m_Weight: 0
+  - m_Path: StylizedHand.Left/Left.HandBone
+    m_Weight: 1
+  - m_Path: StylizedHand.Left/Left.HandBone/Left.MetacarpalIndex
+    m_Weight: 1
+  - m_Path: StylizedHand.Left/Left.HandBone/Left.MetacarpalIndex/Left.ProximalIndex
+    m_Weight: 1
+  - m_Path: StylizedHand.Left/Left.HandBone/Left.MetacarpalIndex/Left.ProximalIndex/Left.IntermediateIndex
+    m_Weight: 1
+  - m_Path: StylizedHand.Left/Left.HandBone/Left.MetacarpalIndex/Left.ProximalIndex/Left.IntermediateIndex/Left.DistalIndex
+    m_Weight: 1
+  - m_Path: StylizedHand.Left/Left.HandBone/Left.MetacarpalIndex/Left.ProximalIndex/Left.IntermediateIndex/Left.DistalIndex/Left.DistalIndex_end
+    m_Weight: 1
+  - m_Path: StylizedHand.Left/Left.HandBone/Left.MetacarpalMiddle
+    m_Weight: 1
+  - m_Path: StylizedHand.Left/Left.HandBone/Left.MetacarpalMiddle/Left.ProximalMiddle
+    m_Weight: 1
+  - m_Path: StylizedHand.Left/Left.HandBone/Left.MetacarpalMiddle/Left.ProximalMiddle/Left.IntermediateMiddle
+    m_Weight: 1
+  - m_Path: StylizedHand.Left/Left.HandBone/Left.MetacarpalMiddle/Left.ProximalMiddle/Left.IntermediateMiddle/Left.DistalMiddle
+    m_Weight: 1
+  - m_Path: StylizedHand.Left/Left.HandBone/Left.MetacarpalMiddle/Left.ProximalMiddle/Left.IntermediateMiddle/Left.DistalMiddle/Left.DistalMiddle_end
+    m_Weight: 1
+  - m_Path: StylizedHand.Left/Left.HandBone/Left.MetacarpalPink
+    m_Weight: 1
+  - m_Path: StylizedHand.Left/Left.HandBone/Left.MetacarpalPink/Left.ProximalPink
+    m_Weight: 1
+  - m_Path: StylizedHand.Left/Left.HandBone/Left.MetacarpalPink/Left.ProximalPink/Left.IntermediatePink
+    m_Weight: 1
+  - m_Path: StylizedHand.Left/Left.HandBone/Left.MetacarpalPink/Left.ProximalPink/Left.IntermediatePink/Left.DistalPink
+    m_Weight: 1
+  - m_Path: StylizedHand.Left/Left.HandBone/Left.MetacarpalPink/Left.ProximalPink/Left.IntermediatePink/Left.DistalPink/Left.DistalPink_end
+    m_Weight: 1
+  - m_Path: StylizedHand.Left/Left.HandBone/Left.MetacarpalRing
+    m_Weight: 1
+  - m_Path: StylizedHand.Left/Left.HandBone/Left.MetacarpalRing/Left.ProximalRing
+    m_Weight: 1
+  - m_Path: StylizedHand.Left/Left.HandBone/Left.MetacarpalRing/Left.ProximalRing/Left.IntermediateRing
+    m_Weight: 1
+  - m_Path: StylizedHand.Left/Left.HandBone/Left.MetacarpalRing/Left.ProximalRing/Left.IntermediateRing/Left.DistalRing
+    m_Weight: 1
+  - m_Path: StylizedHand.Left/Left.HandBone/Left.MetacarpalRing/Left.ProximalRing/Left.IntermediateRing/Left.DistalRing/Left.DistalRing_end
+    m_Weight: 1
+  - m_Path: StylizedHand.Left/Left.HandBone/Left.MetacarpalThumb
+    m_Weight: 1
+  - m_Path: StylizedHand.Left/Left.HandBone/Left.MetacarpalThumb/Left.ProximalThumb
+    m_Weight: 1
+  - m_Path: StylizedHand.Left/Left.HandBone/Left.MetacarpalThumb/Left.ProximalThumb/Left.DistalThumb
+    m_Weight: 1
+  - m_Path: StylizedHand.Left/Left.HandBone/Left.MetacarpalThumb/Left.ProximalThumb/Left.DistalThumb/Left.DistalThumb_end
+    m_Weight: 1
+  - m_Path: StylizedHand.Right
+    m_Weight: 1
+  - m_Path: StylizedHand.Right/Right.HandBone
+    m_Weight: 1
+  - m_Path: StylizedHand.Right/Right.HandBone/Right.MetacarpalIndex
+    m_Weight: 1
+  - m_Path: StylizedHand.Right/Right.HandBone/Right.MetacarpalIndex/Right.ProximalIndex
+    m_Weight: 1
+  - m_Path: StylizedHand.Right/Right.HandBone/Right.MetacarpalIndex/Right.ProximalIndex/Right.IntermediateIndex
+    m_Weight: 1
+  - m_Path: StylizedHand.Right/Right.HandBone/Right.MetacarpalIndex/Right.ProximalIndex/Right.IntermediateIndex/Right.DistalIndex
+    m_Weight: 1
+  - m_Path: StylizedHand.Right/Right.HandBone/Right.MetacarpalIndex/Right.ProximalIndex/Right.IntermediateIndex/Right.DistalIndex/Right.DistalIndex_end
+    m_Weight: 1
+  - m_Path: StylizedHand.Right/Right.HandBone/Right.MetacarpalMiddle
+    m_Weight: 1
+  - m_Path: StylizedHand.Right/Right.HandBone/Right.MetacarpalMiddle/Right.ProximalMiddle
+    m_Weight: 1
+  - m_Path: StylizedHand.Right/Right.HandBone/Right.MetacarpalMiddle/Right.ProximalMiddle/Right.IntermediateMiddle
+    m_Weight: 1
+  - m_Path: StylizedHand.Right/Right.HandBone/Right.MetacarpalMiddle/Right.ProximalMiddle/Right.IntermediateMiddle/Right.DistalMiddle
+    m_Weight: 1
+  - m_Path: StylizedHand.Right/Right.HandBone/Right.MetacarpalMiddle/Right.ProximalMiddle/Right.IntermediateMiddle/Right.DistalMiddle/Right.DistalMiddle_end
+    m_Weight: 1
+  - m_Path: StylizedHand.Right/Right.HandBone/Right.MetacarpalPink
+    m_Weight: 1
+  - m_Path: StylizedHand.Right/Right.HandBone/Right.MetacarpalPink/Right.ProximalPink
+    m_Weight: 1
+  - m_Path: StylizedHand.Right/Right.HandBone/Right.MetacarpalPink/Right.ProximalPink/Right.IntermediatePink
+    m_Weight: 1
+  - m_Path: StylizedHand.Right/Right.HandBone/Right.MetacarpalPink/Right.ProximalPink/Right.IntermediatePink/Right.DistalPink
+    m_Weight: 1
+  - m_Path: StylizedHand.Right/Right.HandBone/Right.MetacarpalPink/Right.ProximalPink/Right.IntermediatePink/Right.DistalPink/Right.DistalPink_end
+    m_Weight: 1
+  - m_Path: StylizedHand.Right/Right.HandBone/Right.MetacarpalRing
+    m_Weight: 1
+  - m_Path: StylizedHand.Right/Right.HandBone/Right.MetacarpalRing/Right.ProximalRing
+    m_Weight: 1
+  - m_Path: StylizedHand.Right/Right.HandBone/Right.MetacarpalRing/Right.ProximalRing/Right.IntermediateRing
+    m_Weight: 1
+  - m_Path: StylizedHand.Right/Right.HandBone/Right.MetacarpalRing/Right.ProximalRing/Right.IntermediateRing/Right.DistalRing
+    m_Weight: 1
+  - m_Path: StylizedHand.Right/Right.HandBone/Right.MetacarpalRing/Right.ProximalRing/Right.IntermediateRing/Right.DistalRing/Right.DistalRing_end
+    m_Weight: 1
+  - m_Path: StylizedHand.Right/Right.HandBone/Right.MetacarpalThumb
+    m_Weight: 1
+  - m_Path: StylizedHand.Right/Right.HandBone/Right.MetacarpalThumb/Right.ProximalThumb
+    m_Weight: 1
+  - m_Path: StylizedHand.Right/Right.HandBone/Right.MetacarpalThumb/Right.ProximalThumb/Right.DistalThumb
+    m_Weight: 1
+  - m_Path: StylizedHand.Right/Right.HandBone/Right.MetacarpalThumb/Right.ProximalThumb/Right.DistalThumb/Right.DistalThumb_end
+    m_Weight: 1
