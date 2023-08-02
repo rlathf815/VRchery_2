@@ -22,12 +22,12 @@ public class ArrowController : MonoBehaviour
     private bool readyToFly;           
     private bool isInitialized;
     private Vector3 direction;
-    // Gravity
+    // 중력
     private float gravity = -9.81f;
 
     private void Awake()
     {
-        // Initialize 
+        // 초기화
         startPoint = transform.position;
         lastPosition = transform.position;
         readyToFly = false;
@@ -65,22 +65,21 @@ public class ArrowController : MonoBehaviour
         {
             flightTimer += Time.deltaTime;
 
-            // Update the velocity with the force of gravity
+            // 중력으로 속도를 업데이트
             velocity.y += gravity * Time.deltaTime;
 
-            // Move the Arrow along the Parabola
+            // 포물선을 따라 화살을 이동
             transform.position += velocity * Time.deltaTime;
 
-            // The direction the Arrow is currently flying
+            // 화살이 현재 날고 있는 방향
             Vector3 direction = transform.position - lastPosition;
 
-            // Collision detection with raycast
+            // 레이캐스트를 통한 충돌 감지
             RaycastHit hit = new RaycastHit();
             Ray ray = new Ray(lastPosition, direction);
-            // Only collide with objects that are not tagged with "Projectile" and not the owner
             if (Physics.Raycast(ray, out hit, direction.magnitude, ArrowSO.CollisionLayerMask, QueryTriggerInteraction.Ignore))
             {
-                // Here you might want to add more things the Arrow should ignore
+                // 여기에 화살표가 무시해야 할 항목을 더 추가 가능
                 if (!hit.collider.CompareTag("Projectile") && hit.collider != ownerCollider)
                 {
                     Arrive(hit);
@@ -88,22 +87,19 @@ public class ArrowController : MonoBehaviour
                 }
             }
 
-            // Rotate the arrow
+            // 화살 회전
             transform.rotation = Quaternion.LookRotation(direction);
 
-            // Update the lastPosition
+            // lastPosition 업데이트
             lastPosition = transform.position;
         }
     }
 
-    /// <summary>
-    /// Shoot the Arrow
-    /// </summary>
-    /// <param name="target">The target the Arrow should be shot at</param>
-    /// <param name="owner">The GameObject shooting the Arrow</param>
-    /// <param name="flightSpeed">The speed of the Arrow</param>
-    /// <param name="heightMultiplier">The parabola-hight of the flightpath</param>
-    /// <param name="lifeTime">Time until the Arrow gets destroyed</param>
+    /// <param name="target">화살을 쏴야 하는 대상</param>
+    /// <param name="owner">화살을 쏘는 게임 오브젝트</param>
+    /// <param name="flightSpeed">화살의 속도</param>
+    /// <param name="heightMultiplier">비행 경로의 포물선 높이</param>
+    /// <param name="lifeTime">화살이 파괴될 때까지의 시간</param>
     public void Shoot(Vector3 direction, GameObject owner, float flightSpeed, float heightMultiplier, float lifeTime)
     {
         direction.y = 0;
@@ -113,18 +109,17 @@ public class ArrowController : MonoBehaviour
         this.heightMultiplier = heightMultiplier;
         this.lifeTime = lifeTime;
 
-        // begin the arrow flight on the next FixedUpdate-step
+        // 다음 FixedUpdate 단계에서 화살 비행 시작
         isInitialized = true;
     }
 
 
     private void Arrive(RaycastHit hit)
     {
-        // Mark the Arrow as arrived
+        // 화살을 도착으로 표시
         readyToFly = false;
 
-        // Stop emmitting the trail when stuck (so stuck arrows moving with its parent i.e. the enemy, do not emmit a trail)
-        // This is done with a short delay to avoid unwated artifacts
+        // 고착 시 trail 중지(특정 오브젝트에 고착된 화살은 더이상 trail x )
         Invoke("DisableTrailEmission", ArrowSO.DisableTrailEmissionTime);
         // 꼬리 페이드아웃
         trailRenderer.time = ArrowSO.TrailFadeoutTime;
@@ -147,7 +142,7 @@ public class ArrowController : MonoBehaviour
         trailRenderer.enabled = false;
     }
 
-    private void MakeChildOfHitObject(Transform parentTransform)
+    private void MakeChildOfHitObject(Transform parentTransform) //화살 도착 시 고착된 물체의 하위(자식) 오브젝트로 만든다
     {
 
         if (IsSuitedParent(parentTransform))
