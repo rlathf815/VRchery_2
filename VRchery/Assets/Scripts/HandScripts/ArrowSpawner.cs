@@ -9,7 +9,6 @@ public class ArrowSpawner : MonoBehaviour
 {
     ActionBasedController controller;
     public GameObject arrowPrefab; // Prefab of the object you want to spawn
-    public GameObject destroyPrefab; // Prefab of the object you want to spawn
 
     // Start is called before the first frame update
     void Start()
@@ -29,8 +28,6 @@ public class ArrowSpawner : MonoBehaviour
         // Check if the collision is with the specific object you want to detect
         if (collision.collider.CompareTag("Quiver") && controller.activateAction.action.ReadValue<float>() > 0.5f)
         {
-            // Disable the destroyPrefab
-            destroyPrefab.SetActive(false);
             // Enable the arrowPrefab
             arrowPrefab.SetActive(true);
 
