@@ -20,11 +20,9 @@ public class Hand : MonoBehaviour
     {
         animator = GetComponent<Animator>();
     }
-    private void OnEnable()
+    private void OnDisable()
     {
-        // Reset the animation to the initial state when the object is reactivated
-        gripCurrent = Mathf.MoveTowards(1.0f, 0f, Time.deltaTime * speed);
-        animator.SetFloat(animatorGripParam, 0f);
+        
     }
 
     // Update is called once per frame
@@ -32,6 +30,7 @@ public class Hand : MonoBehaviour
     {
         AnimateHand();
         Debug.Log("current" + gripCurrent);
+        Debug.Log("target" + gripTarget);
     }
 
     internal void SetDraw(float v)
