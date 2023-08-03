@@ -24,6 +24,7 @@ public class ArrowController : MonoBehaviour
     private Vector3 direction;
     // 중력
     private float gravity = -9.81f;
+    public PlayerData playerData;
 
     private void Awake()
     {
@@ -80,7 +81,7 @@ public class ArrowController : MonoBehaviour
             if (Physics.Raycast(ray, out hit, direction.magnitude, ArrowSO.CollisionLayerMask, QueryTriggerInteraction.Ignore))
             {
                 // 여기에 화살표가 무시해야 할 항목을 더 추가 가능
-                if (!hit.collider.CompareTag("Projectile") && hit.collider != ownerCollider)
+                if (!hit.collider.CompareTag("Arrow") && hit.collider != ownerCollider) //화살끼리는 충돌 x ->겹쳐질수있음
                 {
                     Arrive(hit);
                     return;
@@ -100,11 +101,13 @@ public class ArrowController : MonoBehaviour
     /// <param name="flightSpeed">화살의 속도</param>
     /// <param name="heightMultiplier">비행 경로의 포물선 높이</param>
     /// <param name="lifeTime">화살이 파괴될 때까지의 시간</param>
-    public void Shoot(Vector3 direction, GameObject owner, float flightSpeed, float heightMultiplier, float lifeTime)
+    public void Shoot(Vector3 targetPos, GameObject shooter, float flightSpeed, float heightMultiplier, float lifeTime)
     {
+        Vector3 direction = (targetPos - shooter.transform.position).normalized;
+
         direction.y = 0;
         this.velocity = direction * flightSpeed;
-        ownerCollider = owner.GetComponent<Collider>();
+        ownerCollider = shooter.GetComponent<Collider>();
         this.flightSpeed = flightSpeed;
         this.heightMultiplier = heightMultiplier;
         this.lifeTime = lifeTime;
@@ -130,6 +133,33 @@ public class ArrowController : MonoBehaviour
 
         // 충돌한 오브젝트의 하위로 들어가도록 함
         MakeChildOfHitObject(hit.transform);
+
+        if (hit.transform.CompareTag("1p"))
+        {
+            // Increase score. This assumes you have a reference to the PlayerData instance.
+            playerData.score += 1;
+        }
+        else if (hit.transform.CompareTag("3p"))
+        {
+            // Increase score. This assumes you have a reference to the PlayerData instance.
+            playerData.score += 3;
+        }
+        else if (hit.transform.CompareTag("5p"))
+        {
+            // Increase score. This assumes you have a reference to the PlayerData instance.
+            playerData.score += 5;
+        }
+        else if (hit.transform.CompareTag("7p"))
+        {
+            // Increase score. This assumes you have a reference to the PlayerData instance.
+            playerData.score += 7;
+        }
+        else if (hit.transform.CompareTag("10p"))
+        {
+            // Increase score. This assumes you have a reference to the PlayerData instance.
+            playerData.score += 10;
+        }
+        Debug.Log("tag : " + hit.transform.tag);
     }
 
     private void DisableTrailEmission()

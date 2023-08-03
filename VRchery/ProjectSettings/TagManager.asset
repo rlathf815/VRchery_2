@@ -9,6 +9,12 @@ TagManager:
   - Quiver
   - RightHand
   - ArrowHand
+  - Arrow
+  - 1p
+  - 3p
+  - 5p
+  - 7p
+  - 10p
   layers:
   - Default
   - TransparentFX

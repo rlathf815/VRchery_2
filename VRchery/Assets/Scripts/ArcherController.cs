@@ -32,7 +32,7 @@ public class ArcherController : MonoBehaviour
     public Vector3 rotationOffsetEuler; // 회전 offset값. 정확히 앞으로 잘 나가게 조정
     public Vector3 positionOffset; // 위치 offset값. 정확히 앞으로 잘 나가게 조정
     public GameObject TargetObject; // 화살 비행 방향을 나타내는 게임 오브젝트
-    public Animator bowAnimator; // animator attached to the bow
+    public Animator bowAnimator; // 활 애니메이터 컨트롤러
     public float DistanceThreshold = 0.2f;
     public GameObject BowstringObject;
     public GameObject RightHandObject;
@@ -41,65 +41,22 @@ public class ArcherController : MonoBehaviour
 
     private void Update()
     {
-        List<InputDevice> devices = new List<InputDevice>();
-
-        // 왼손 컨트롤러
-        InputDeviceCharacteristics leftControllerCharacteristics = InputDeviceCharacteristics.Left | InputDeviceCharacteristics.Controller;
-        InputDevices.GetDevicesWithCharacteristics(leftControllerCharacteristics, devices);
-        InputDevice leftController = devices[0];
-        leftController.TryGetFeatureValue(CommonUsages.devicePosition, out Vector3 leftDevicePosition);
-
-        // 오른손 컨트롤러
-        InputDeviceCharacteristics rightControllerCharacteristics = InputDeviceCharacteristics.Right | InputDeviceCharacteristics.Controller;
-        InputDevices.GetDevicesWithCharacteristics(rightControllerCharacteristics, devices);
-        rightController = devices[0];
-        rightController.TryGetFeatureValue(CommonUsages.devicePosition, out Vector3 rightDevicePosition);
-
-        // 컨트롤러 간 거리 측정
-        float distance = CalculateDistance(leftDevicePosition, rightDevicePosition);
-
-        rightController.TryGetFeatureValue(CommonUsages.gripButton, out bool rightGripValue);
-        rightController.TryGetFeatureValue(CommonUsages.triggerButton, out bool triggerValue);
-        if(rightGripValue && triggerValue)
+        // If the left mouse button is clicked
+        if (Input.GetMouseButtonDown(0))
         {
-            RightHandObject.transform.SetParent(BowstringObject.transform);
-            HoldArrow.SetActive(true);
-            if (distance >= DistanceThreshold)
-            {
-                    // hold 시간을 늘리고 "hold" 애니메이터 파라미터 true
-                rKeyHoldTime += Time.deltaTime/5;
-                bowAnimator.SetBool("hold", true);
+            // Cast a ray into the scene
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
 
+            if (Physics.Raycast(ray, out hit))
+            {
+                // Create a new arrow at the Archer's position
+                var Arrow = Instantiate(ArrowPrefab, transform.position, Quaternion.identity);
+
+                // Shoot the arrow towards the point that was clicked
+                Arrow.GetComponent<ArrowController>().Shoot(hit.point, gameObject, ArrowFlightSpeed, HeightMultiplier, ArrowLifeTime);
             }
         }
-        
-        else if (wasGripPressed && (!rightGripValue || !triggerValue)) //전 프레임에선 두 버튼 모두 눌려있음&&현 프레임에선 둘 다 놓아있음
-        {
-            // "fire" 애니메이터 트리거 설정
-            HoldArrow.SetActive(false);
-            bowAnimator.SetTrigger("fire");
-            bowAnimator.SetBool("hold", false);
-
-            // maximum 속도는 40, minimum 15
-            float modifiedFlightSpeed = Mathf.Clamp(rKeyHoldTime * ArrowFlightSpeed, 15f, 40f);
-
-            // 사정거리도 hold 시간에 따라 조정
-            float modifiedShootRange = Mathf.Lerp(MinimalShootRange, MaximalShootRange, rKeyHoldTime);
-
-            // Shoot
-            TryToShoot(modifiedShootRange, modifiedFlightSpeed);
-
-            rKeyHoldTime = 0f;
-            RightHandObject.transform.SetParent(RightXR.transform);
-
-        }
-
-        // 현 프레임 상태로 업데이트
-        wasGripPressed = rightGripValue && triggerValue;
-    }
-    private float CalculateDistance(Vector3 position1, Vector3 position2)
-    {
-        return Vector3.Distance(position1, position2);
     }
 
 
