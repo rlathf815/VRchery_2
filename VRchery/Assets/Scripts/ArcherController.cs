@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.XR;
 using System.Collections.Generic;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public class ArcherController : MonoBehaviour
 {
@@ -17,6 +18,8 @@ public class ArcherController : MonoBehaviour
     [Space]
     public GameObject Target;
     public bool UseTarget;
+
+    public XRBaseController leftCon,rightCon;
 
     private float rKeyHoldTime = 0f;
     private float minFlightSpeed = 4f;
@@ -69,7 +72,21 @@ public class ArcherController : MonoBehaviour
                 // hold 시간을 늘리고 "hold" 애니메이터 파라미터 true
                 rKeyHoldTime += Time.deltaTime / 5;
                 bowAnimator.SetBool("hold", true);
-
+                if (rKeyHoldTime <= 0.1f)
+                {
+                    leftCon.SendHapticImpulse(0.1f, 0.5f);
+                    rightCon.SendHapticImpulse(0.1f, 0.5f);
+                }
+                else if (0.1f < rKeyHoldTime && rKeyHoldTime < 0.3f)
+                {
+                    leftCon.SendHapticImpulse(0.5f, 0.5f);
+                    rightCon.SendHapticImpulse(0.5f, 0.5f);
+                }
+                else
+                {
+                    leftCon.SendHapticImpulse(0.9f, 0.5f);
+                    rightCon.SendHapticImpulse(0.9f, 0.5f);
+                }
             }
         }
 
