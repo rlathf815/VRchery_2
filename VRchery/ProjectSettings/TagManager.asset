@@ -15,6 +15,10 @@ TagManager:
   - 5p
   - 7p
   - 10p
+  - lb_bird
+  - lb_groundTarget
+  - lb_perchTarget
+  - Animal
   layers:
   - Default
   - TransparentFX
