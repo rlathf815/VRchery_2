@@ -3,23 +3,23 @@
 public class ArrowController : MonoBehaviour
 {
     [Header("Trail")]
-    public TrailRenderer trailRenderer; 
+    public TrailRenderer trailRenderer;
 
-    public ArrowSO ArrowSO;            
+    public ArrowSO ArrowSO;
     public GameObject MeshParent;
 
     private Vector3 velocity;
-    private Collider ownerCollider;    
-    private float flightSpeed;         
-    private float heightMultiplier;    
-    private float lifeTime;            
+    private Collider ownerCollider;
+    private float flightSpeed;
+    private float heightMultiplier;
+    private float lifeTime;
 
-    private float flightTimer;         
-    private Vector3 startPoint;        
-    private float targetDistance;      
-    private float speedToDistance;     
-    private Vector3 lastPosition;      
-    private bool readyToFly;           
+    private float flightTimer;
+    private Vector3 startPoint;
+    private float targetDistance;
+    private float speedToDistance;
+    private Vector3 lastPosition;
+    private bool readyToFly;
     private bool isInitialized;
     private Vector3 direction;
     // 중력
@@ -101,13 +101,11 @@ public class ArrowController : MonoBehaviour
     /// <param name="flightSpeed">화살의 속도</param>
     /// <param name="heightMultiplier">비행 경로의 포물선 높이</param>
     /// <param name="lifeTime">화살이 파괴될 때까지의 시간</param>
-    public void Shoot(Vector3 targetPos, GameObject shooter, float flightSpeed, float heightMultiplier, float lifeTime)
+    public void Shoot(Vector3 direction, GameObject owner, float flightSpeed, float heightMultiplier, float lifeTime)
     {
-        Vector3 direction = (targetPos - shooter.transform.position).normalized;
-
         direction.y = 0;
         this.velocity = direction * flightSpeed;
-        ownerCollider = shooter.GetComponent<Collider>();
+        ownerCollider = owner.GetComponent<Collider>();
         this.flightSpeed = flightSpeed;
         this.heightMultiplier = heightMultiplier;
         this.lifeTime = lifeTime;
@@ -134,32 +132,10 @@ public class ArrowController : MonoBehaviour
         // 충돌한 오브젝트의 하위로 들어가도록 함
         MakeChildOfHitObject(hit.transform);
 
-        if (hit.transform.CompareTag("1p"))
+        if (hit.transform.CompareTag("target"))
         {
-            // Increase score. This assumes you have a reference to the PlayerData instance.
             playerData.score += 1;
         }
-        else if (hit.transform.CompareTag("3p"))
-        {
-            // Increase score. This assumes you have a reference to the PlayerData instance.
-            playerData.score += 3;
-        }
-        else if (hit.transform.CompareTag("5p"))
-        {
-            // Increase score. This assumes you have a reference to the PlayerData instance.
-            playerData.score += 5;
-        }
-        else if (hit.transform.CompareTag("7p"))
-        {
-            // Increase score. This assumes you have a reference to the PlayerData instance.
-            playerData.score += 7;
-        }
-        else if (hit.transform.CompareTag("10p"))
-        {
-            // Increase score. This assumes you have a reference to the PlayerData instance.
-            playerData.score += 10;
-        }
-        Debug.Log("tag : " + hit.transform.tag);
     }
 
     private void DisableTrailEmission()

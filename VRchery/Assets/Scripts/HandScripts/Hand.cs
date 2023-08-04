@@ -29,8 +29,6 @@ public class Hand : MonoBehaviour
     void Update()
     {
         AnimateHand();
-        Debug.Log("current" + gripCurrent);
-        Debug.Log("target" + gripTarget);
     }
 
     internal void SetDraw(float v)
