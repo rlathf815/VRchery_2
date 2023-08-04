@@ -101,20 +101,22 @@ public class ArrowController : MonoBehaviour
     /// <param name="flightSpeed">화살의 속도</param>
     /// <param name="heightMultiplier">비행 경로의 포물선 높이</param>
     /// <param name="lifeTime">화살이 파괴될 때까지의 시간</param>
-    public void Shoot(Vector3 targetPos, GameObject shooter, float flightSpeed, float heightMultiplier, float lifeTime)
+    public void Shoot(Vector3 direction, GameObject shooter, float flightSpeed, float heightMultiplier, float lifeTime)
     {
-        Vector3 direction = (targetPos - shooter.transform.position).normalized;
+        // Normalize the direction to ensure its magnitude is 1
+        direction = direction.normalized;
 
-        direction.y = 0;
+        // Set the arrow properties
         this.velocity = direction * flightSpeed;
         ownerCollider = shooter.GetComponent<Collider>();
         this.flightSpeed = flightSpeed;
         this.heightMultiplier = heightMultiplier;
         this.lifeTime = lifeTime;
 
-        // 다음 FixedUpdate 단계에서 화살 비행 시작
+        // Enable the arrow to start flying in the next FixedUpdate
         isInitialized = true;
     }
+
 
 
     private void Arrive(RaycastHit hit)
@@ -134,32 +136,41 @@ public class ArrowController : MonoBehaviour
         // 충돌한 오브젝트의 하위로 들어가도록 함
         MakeChildOfHitObject(hit.transform);
 
-        if (hit.transform.CompareTag("1p"))
-        {
-            // Increase score. This assumes you have a reference to the PlayerData instance.
-            playerData.score += 1;
+        if (hit.transform.CompareTag("1p")) //여기에 충돌한 오브젝트들에 따른 결과 추가            // 
+        {                                                                                          // 
+            // Increase score. This assumes you have a reference to the PlayerData instance.       // 
+            playerData.score += 1;                                                                 // 
+        }                                                                                          // 
+        else if (hit.transform.CompareTag("3p"))                                                   // 
+        {                                                                                          // 
+            // Increase score. This assumes you have a reference to the PlayerData instance.       // 
+            playerData.score += 3;                                                                 // 
+        }                                                                                          // 
+        else if (hit.transform.CompareTag("5p"))                                                   // 
+        {                                                                                          // 과녁
+            // Increase score. This assumes you have a reference to the PlayerData instance.       // 
+            playerData.score += 5;                                                                 // 
+        }                                                                                          // 
+        else if (hit.transform.CompareTag("7p"))                                                   // 
+        {                                                                                          // 
+            // Increase score. This assumes you have a reference to the PlayerData instance.       // 
+            playerData.score += 7;                                                                 // 
+        }                                                                                          // 
+        else if (hit.transform.CompareTag("10p"))                                                  // 
+        {                                                                                          // 
+            // Increase score. This assumes you have a reference to the PlayerData instance.       // 
+            playerData.score += 10;                                                                
+        }                                                                                          
+        else if (hit.collider.tag == "lb_bird") //새                                               //
+        {                                                                                          // 새
+            hit.transform.SendMessage("KillBirdWithForce", transform.forward * 200);               //
+        }                                                                                          
+        else if (hit.collider.tag == "Animal")                                                     //
+        {                                                                                          // 기타동물
+            hit.transform.SendMessage("kill");                                                     //
         }
-        else if (hit.transform.CompareTag("3p"))
-        {
-            // Increase score. This assumes you have a reference to the PlayerData instance.
-            playerData.score += 3;
-        }
-        else if (hit.transform.CompareTag("5p"))
-        {
-            // Increase score. This assumes you have a reference to the PlayerData instance.
-            playerData.score += 5;
-        }
-        else if (hit.transform.CompareTag("7p"))
-        {
-            // Increase score. This assumes you have a reference to the PlayerData instance.
-            playerData.score += 7;
-        }
-        else if (hit.transform.CompareTag("10p"))
-        {
-            // Increase score. This assumes you have a reference to the PlayerData instance.
-            playerData.score += 10;
-        }
-        Debug.Log("tag : " + hit.transform.tag);
+        Debug.Log("tag : " + hit.transform.tag);                                                   
+
     }
 
     private void DisableTrailEmission()
