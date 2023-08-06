@@ -132,10 +132,41 @@ public class ArrowController : MonoBehaviour
         // 충돌한 오브젝트의 하위로 들어가도록 함
         MakeChildOfHitObject(hit.transform);
 
-        if (hit.transform.CompareTag("target"))
-        {
-            playerData.score += 1;
+        if (hit.transform.CompareTag("1p")) //여기에 충돌한 오브젝트들에 따른 결과 추가            // 
+        {                                                                                          // 
+            // Increase score. This assumes you have a reference to the PlayerData instance.       // 
+            playerData.score += 1;                                                                 // 
+        }                                                                                          // 
+        else if (hit.transform.CompareTag("3p"))                                                   // 
+        {                                                                                          // 
+            // Increase score. This assumes you have a reference to the PlayerData instance.       // 
+            playerData.score += 3;                                                                 // 
+        }                                                                                          // 
+        else if (hit.transform.CompareTag("5p"))                                                   // 
+        {                                                                                          // 과녁
+            // Increase score. This assumes you have a reference to the PlayerData instance.       // 
+            playerData.score += 5;                                                                 // 
+        }                                                                                          // 
+        else if (hit.transform.CompareTag("7p"))                                                   // 
+        {                                                                                          // 
+            // Increase score. This assumes you have a reference to the PlayerData instance.       // 
+            playerData.score += 7;                                                                 // 
+        }                                                                                          // 
+        else if (hit.transform.CompareTag("10p"))                                                  // 
+        {                                                                                          // 
+            // Increase score. This assumes you have a reference to the PlayerData instance.       // 
+            playerData.score += 10;
         }
+        else if (hit.collider.tag == "lb_bird") //새                                               //
+        {                                                                                          // 새
+            hit.transform.SendMessage("KillBirdWithForce", transform.forward * 200);               //
+        }
+        else if (hit.collider.tag == "Animal")                                                     //
+        {                                                                                          // 기타동물
+            hit.transform.SendMessage("kill");                                                     //
+        }
+        Debug.Log("tag : " + hit.transform.tag);
+
     }
 
     private void DisableTrailEmission()
