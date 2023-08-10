@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections;
 
 public class ArrowController : MonoBehaviour
 {
@@ -164,6 +165,7 @@ public class ArrowController : MonoBehaviour
         else if (hit.collider.tag == "Animal")                                                     //
         {                                                                                          // 기타동물
             hit.transform.SendMessage("kill");                                                     //
+            StartCoroutine(DisableAfterDelay(hit.transform.gameObject, 3f));
         }
         Debug.Log("tag : " + hit.transform.tag);
 
@@ -227,5 +229,11 @@ public class ArrowController : MonoBehaviour
             else
                 return false;
         }
+    }
+
+    private IEnumerator DisableAfterDelay(GameObject gameObject, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        gameObject.SetActive(false);
     }
 }
