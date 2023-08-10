@@ -9,7 +9,7 @@ public class AnimalController : MonoBehaviour
     public float wanderRadius;
     public float wanderTimer;
     public GameObject t;
-    private Transform target;
+    public Transform target;
     private NavMeshAgent agent;
     private float timer;
 
