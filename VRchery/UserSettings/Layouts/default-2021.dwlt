@@ -120,7 +120,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 127
+  controlID: 50
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -171,7 +171,7 @@ MonoBehaviour:
   m_MinSize: {x: 100, y: 200}
   m_MaxSize: {x: 8096, y: 16192}
   vertical: 1
-  controlID: 53
+  controlID: 51
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -380,9 +380,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 
-      m_LastClickedID: 0
-      m_ExpandedIDs: 78f5ffff30fbffff1e650000e0680000f6680000
+      m_SelectedIDs: a4660000
+      m_LastClickedID: 26276
+      m_ExpandedIDs: f052ffff3259ffff2cfbffff34650000d8650000146900002a690000ec690000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -665,9 +665,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 62.06965, y: 11.957485, z: 36.87685}
+    m_Target: {x: 43.91317, y: 8.099347, z: -7.8202896}
     speed: 2
-    m_Value: {x: 62.06965, y: 11.957485, z: 36.87685}
+    m_Value: {x: 43.91317, y: 8.099347, z: -7.8202896}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -714,20 +714,20 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: -0.1786402, y: 0.8161666, z: -0.24769379, w: -0.4943457}
+    m_Target: {x: -0.025569553, y: 0.9986494, z: 0.016948506, w: -0.0751408}
     speed: 2
-    m_Value: {x: -0.17793337, y: 0.81537163, z: -0.24749538, w: -0.49219394}
+    m_Value: {x: -0.025545336, y: 0.9968251, z: 0.016877357, w: -0.0735}
   m_Size:
-    m_Target: 0.8660254
+    m_Target: 37.30944
     speed: 2
-    m_Value: 0.86602545
+    m_Value: 35.702812
   m_Ortho:
     m_Target: 0
     speed: 2
     m_Value: 0
   m_CameraSettings:
-    m_Speed: 0.76062
-    m_SpeedNormalized: 0.38
+    m_Speed: 0.64068
+    m_SpeedNormalized: 0.32
     m_SpeedMin: 0.001
     m_SpeedMax: 2
     m_EasingEnabled: 1
@@ -1022,22 +1022,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Unvik_3D/Cross_Plains/FBX/Materials
+    - Assets/BrokenVector/LowPolyDungeon/Prefabs/Furniture
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Unvik_3D/Cross_Plains/FBX/Materials
+  - Assets/BrokenVector/LowPolyDungeon/Prefabs/Furniture
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\UnityGit\VRchery_2\VRchery
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 400}
-    m_SelectedIDs: 600b0100
-    m_LastClickedID: 68448
-    m_ExpandedIDs: 000000003c72000098730000a4730000be730000c07300006c9e00006e9e0000080b0100540b0100620b0100640b010000ca9a3bffffff7f
+    scrollPos: {x: 0, y: 93}
+    m_SelectedIDs: 4aa10000
+    m_LastClickedID: 41290
+    m_ExpandedIDs: 000000008a720000e4730000f07300000c740000407400004274000032a1000092ba000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1065,7 +1065,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 000000003c720000
+    m_ExpandedIDs: 000000008a720000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
