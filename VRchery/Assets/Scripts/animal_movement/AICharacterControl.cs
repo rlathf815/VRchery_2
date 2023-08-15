@@ -12,6 +12,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
         public Transform target;
         public Animator animator;
 
+        private bool rotated = false;
         private bool isWalking = false; // Track walking state
 
         private void Start()
@@ -58,6 +59,13 @@ namespace UnityStandardAssets.Characters.ThirdPerson
         void kill()
         {
             target = null;
+            if (!rotated)
+            {
+                // Rotate the capsule collider's GameObject by 90 degrees to the left
+                //transform.Rotate(Vector3.right, -90f);
+                //transform.localScale *= 0.5f;
+                rotated = true; // Set to true to prevent repeated rotations
+            }
             animator.SetTrigger("killed");
         }
     }
