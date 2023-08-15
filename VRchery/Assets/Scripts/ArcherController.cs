@@ -40,6 +40,7 @@ public class ArcherController : MonoBehaviour
     public GameObject RightHandObject;
     public GameObject RightXR;
     public GameObject HoldArrow;
+    public GameObject pos;
 
     private void Update()
     {
@@ -136,7 +137,7 @@ public class ArcherController : MonoBehaviour
     private void ShootArrow(Vector3 direction, float modifiedMaxShootRange, float modifiedFlightSpeed)
     {
         Quaternion rotationOffset = Quaternion.Euler(rotationOffsetEuler);
-        var Arrow = Instantiate(ArrowPrefab, transform.position + positionOffset, Quaternion.LookRotation(direction) * rotationOffset);
+        var Arrow = Instantiate(ArrowPrefab, pos.transform.position, Quaternion.LookRotation(direction) * rotationOffset);
 
         Arrow.name = "Arrow";
         Arrow.GetComponent<ArrowController>().Shoot(direction, gameObject, modifiedFlightSpeed, HeightMultiplier, ArrowLifeTime);

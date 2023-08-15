@@ -6,5 +6,6 @@ public class PlayerData : ScriptableObject
 {
     public string PlayerName;
     public int score;
+    public int arrows;
 
 }
