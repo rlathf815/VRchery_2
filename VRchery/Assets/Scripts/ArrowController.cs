@@ -161,6 +161,7 @@ public class ArrowController : MonoBehaviour
         else if (hit.collider.tag == "lb_bird") //새                                               //
         {                                                                                          // 새
             hit.transform.SendMessage("KillBirdWithForce", transform.forward * 200);               //
+            playerData.score += 20;
         }
         else if (hit.collider.tag == "Animal")                                                     //
         {                                                                                          // 기타동물
@@ -189,13 +190,13 @@ public class ArrowController : MonoBehaviour
         {                                                                                          // 기타동물
             hit.transform.SendMessage("kill");                                                     //
             StartCoroutine(DisableAfterDelay(hit.transform.gameObject, 3f));
-            playerData.score += 10;
+            playerData.score += 20;
         }
         else if (hit.collider.tag == "Rabbit")                                                     //
         {                                                                                          // 기타동물
             hit.transform.SendMessage("kill");                                                     //
             StartCoroutine(DisableAfterDelay(hit.transform.gameObject, 3f));
-            playerData.score += 10;
+            playerData.score += 20;
         }
         Debug.Log("tag : " + hit.transform.tag);
 

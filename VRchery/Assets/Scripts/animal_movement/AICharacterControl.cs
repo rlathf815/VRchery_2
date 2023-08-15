@@ -59,7 +59,6 @@ namespace UnityStandardAssets.Characters.ThirdPerson
         void kill()
         {
             target = null;
-            Debug.Log("worked");
             animator.SetTrigger("killed");
         }
     }

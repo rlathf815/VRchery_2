@@ -2,6 +2,7 @@
 using UnityEngine.XR;
 using System.Collections.Generic;
 using UnityEngine.XR.Interaction.Toolkit;
+using UnityEngine.SceneManagement;
 
 public class ArcherController : MonoBehaviour
 {
@@ -24,6 +25,7 @@ public class ArcherController : MonoBehaviour
     private float rKeyHoldTime = 0f;
     private float minFlightSpeed = 4f;
     private float maxFlightSpeed = 8f;
+
     // private float minShootRange = 5f;
     // private float maxShootRange = 50f;
     private InputDevice leftController;           //왼손 컨트롤러 input device 정보 저장
@@ -97,7 +99,7 @@ public class ArcherController : MonoBehaviour
             HoldArrow.SetActive(false);
             bowAnimator.SetTrigger("fire");
             bowAnimator.SetBool("hold", false);
-
+            
             // maximum 속도는 40, minimum 15
             float modifiedFlightSpeed = Mathf.Clamp(rKeyHoldTime * ArrowFlightSpeed, 15f, 40f);
 
