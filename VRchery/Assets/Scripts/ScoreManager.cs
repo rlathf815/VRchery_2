@@ -10,4 +10,8 @@ public class ScoreManager : MonoBehaviour
     {
         playerData.score = 0;
     }
+    public void Arrow()
+    {
+
+    }
 }
