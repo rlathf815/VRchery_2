@@ -167,6 +167,36 @@ public class ArrowController : MonoBehaviour
             hit.transform.SendMessage("kill");                                                     //
             //StartCoroutine(DisableAfterDelay(hit.transform.gameObject, 3f));
         }
+        else if (hit.collider.tag == "Bear")                                                     //
+        {                                                                                          // 기타동물
+            hit.transform.SendMessage("kill");                                                     //
+            StartCoroutine(DisableAfterDelay(hit.transform.gameObject, 3f));
+            playerData.score += 10;
+        }
+        else if (hit.collider.tag == "Dear")                                                     //
+        {                                                                                          // 기타동물
+            hit.transform.SendMessage("kill");                                                     //
+            StartCoroutine(DisableAfterDelay(hit.transform.gameObject, 3f));
+            playerData.score += 10;
+        }
+        else if (hit.collider.tag == "Pig")                                                     //
+        {                                                                                          // 기타동물
+            hit.transform.SendMessage("kill");                                                     //
+            StartCoroutine(DisableAfterDelay(hit.transform.gameObject, 3f));
+            playerData.score += 10;
+        }
+        else if (hit.collider.tag == "Wolf")                                                     //
+        {                                                                                          // 기타동물
+            hit.transform.SendMessage("kill");                                                     //
+            StartCoroutine(DisableAfterDelay(hit.transform.gameObject, 3f));
+            playerData.score += 10;
+        }
+        else if (hit.collider.tag == "Rabbit")                                                     //
+        {                                                                                          // 기타동물
+            hit.transform.SendMessage("kill");                                                     //
+            StartCoroutine(DisableAfterDelay(hit.transform.gameObject, 3f));
+            playerData.score += 10;
+        }
         Debug.Log("tag : " + hit.transform.tag);
 
     }

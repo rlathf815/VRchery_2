@@ -59,13 +59,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
         void kill()
         {
             target = null;
-            if (!rotated)
-            {
-                // Rotate the capsule collider's GameObject by 90 degrees to the left
-                //transform.Rotate(Vector3.right, -90f);
-                //transform.localScale *= 0.5f;
-                rotated = true; // Set to true to prevent repeated rotations
-            }
+            Debug.Log("worked");
             animator.SetTrigger("killed");
         }
     }

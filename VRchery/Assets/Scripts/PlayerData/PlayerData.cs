@@ -8,4 +8,9 @@ public class PlayerData : ScriptableObject
     public int score;
     public int arrows;
 
+
+    void Start()  
+    {
+        score = 0;
+    }
 }
