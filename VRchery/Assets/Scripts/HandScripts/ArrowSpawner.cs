@@ -42,7 +42,7 @@ public class ArrowSpawner : MonoBehaviour
     {
         if (count > 10)
         {
-            SceneManager.LoadScene("End_scene");
+            SceneManager.LoadScene("Lobby");
         }
     }
 }
