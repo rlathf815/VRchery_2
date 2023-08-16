@@ -2,14 +2,16 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!21 &2100000
 Material:
-  serializedVersion: 6
+  serializedVersion: 8
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Horizon
   m_Shader: {fileID: 4800000, guid: 184593afc3724ae8a3125b378c12e085, type: 3}
-  m_ShaderKeywords: DSKY_HORIZON
+  m_ValidKeywords:
+  - DSKY_HORIZON
+  m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -67,6 +69,7 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    m_Ints: []
     m_Floats:
     - _BumpScale: 1
     - _Cutoff: 0.5
@@ -81,8 +84,8 @@ Material:
     - _IntensityT1: 1.5
     - _IntensityT2: 1.5
     - _IntensityT3: -0.5
-    - _Level0: 55
-    - _Level1: 800
+    - _Level0: 72.2
+    - _Level1: 850.1
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
@@ -104,5 +107,6 @@ Material:
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _Level0Color: {r: 0.85490197, g: 0.88440984, b: 0.92941177, a: 1}
+    - _Level0Color: {r: 1, g: 1, b: 1, a: 1}
     - _Level1Color: {r: 0.2352941, g: 0.37254906, b: 1, a: 0}
+  m_BuildTextureStacks: []
