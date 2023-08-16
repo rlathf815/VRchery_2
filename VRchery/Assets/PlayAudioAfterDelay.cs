@@ -24,7 +24,7 @@ public class PlayAudioAfterDelay : MonoBehaviour
         audioSource.clip = clip1;
         audioSource.Play();
         yield return new WaitForSeconds(clip1.length);
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(0.6f);
 
         audioSource.clip = clip2;
         audioSource.Play();

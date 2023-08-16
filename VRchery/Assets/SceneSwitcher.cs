@@ -20,7 +20,7 @@ public class SceneSwitcher : MonoBehaviour
     IEnumerator SwitchToForestScene()
     {
         circle.SetActive(true);
-        yield return new WaitForSeconds(5); 
+        yield return new WaitForSeconds(3); 
         SceneManager.LoadScene(forestSceneName);
     }
 }
