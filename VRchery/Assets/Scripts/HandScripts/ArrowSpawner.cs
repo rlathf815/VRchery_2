@@ -10,7 +10,10 @@ public class ArrowSpawner : MonoBehaviour
 {
     ActionBasedController controller;
     public GameObject arrowPrefab; // Prefab of the object you want to spawn
+    public GameObject scoreCanvas;
     private int count;
+    private Coroutine loadSceneCoroutine;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -42,7 +45,14 @@ public class ArrowSpawner : MonoBehaviour
     {
         if (count > 10)
         {
-            SceneManager.LoadScene("Lobby");
+            scoreCanvas.SetActive(true);
+            loadSceneCoroutine = StartCoroutine(LoadEndSceneAfterDelay());
         }
+    }
+
+    private IEnumerator LoadEndSceneAfterDelay()
+    {
+        yield return new WaitForSeconds(5.0f); // Wait for 5 seconds
+        SceneManager.LoadScene("Lobby");
     }
 }
