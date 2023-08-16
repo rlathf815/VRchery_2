@@ -35,7 +35,6 @@ public class RandomPosition : MonoBehaviour
         float x = Random.Range(-randomRange, randomRange);
         float z = Random.Range(-randomRange, randomRange);
         Vector3 newPosition = originalPosition + new Vector3(x, 0.0f, z);
-        Debug.Log("New Position: " + newPosition);
         transform.position = newPosition;
     }
 }
